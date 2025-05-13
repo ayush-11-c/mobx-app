@@ -2,11 +2,13 @@ import UserCard from "./UserCard";
 
 const UserList = ({ users }) => {
   return (
-    <div>
+    <div className="user-list">
       {users.map((user, index) => (
-        <div key={index} className="User">
-          <UserCard name={user.name.first} img={user.picture.large} />
-        </div>
+        <UserCard
+          key={index}
+          name={`${user.name.first} ${user.name.last}`}
+          img={user.picture.large}
+        />
       ))}
     </div>
   );
