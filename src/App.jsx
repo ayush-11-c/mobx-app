@@ -19,24 +19,32 @@ const App = observer(() => {
 
       {userStore.users.length > 0 ? (
         <>
-          <UserList users={userStore.users} />
+          {userStore.loading ? (
+            <Loading />
+          ) : (
+            <UserList users={userStore.users} />
+          )}
 
-          <div className="pagination">
-            {userStore.page > 1 && (
+          {!userStore.loading && (
+            <div className="pagination">
+              {userStore.page > 1 && (
+                <button
+                  className="previous"
+                  onClick={() => fetchUser({ page: userStore.page - 1 })}
+                  disabled={userStore.loading}
+                >
+                  {"Previous"}
+                </button>
+              )}
               <button
-                className="previous"
-                onClick={() => fetchUser({ page: userStore.page - 1 })}
+                className="next"
+                onClick={() => fetchUser({ page: userStore.page + 1 })}
+                disabled={userStore.loading}
               >
-                Prev
+                {"Next"}
               </button>
-            )}
-            <button
-              className="next"
-              onClick={() => fetchUser({ page: userStore.page + 1 })}
-            >
-              Next
-            </button>
-          </div>
+            </div>
+          )}
         </>
       ) : (
         <div>

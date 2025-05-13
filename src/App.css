@@ -1,79 +1,88 @@
-.App {
-  text-align: center;
+:root {
+  --dark-bg: #1a1d24;
+  --primary-blue: #4a6cf7;
+  --hover-blue: #3a5ce4;
+  --white: #ffffff;
+  --light-gray: #f5f7fa;
+  --text-dark: #2d3748;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef7 50%, #dfe8f5 100%);
+  background-attachment: fixed;
+  font-family: "Segoe UI", sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.App {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 }
 
 .App-header {
-  background-color: #282c34;
-  color: white;
-  padding: 20px 0;
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #2d3748 100%);
+  color: var(--white);
+  padding: 2rem 0;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-img {
-  border-radius: 100%;
-  margin: 20px;
-}
-
-.Name {
-  font-size: 2rem;
-  color: #282c34;
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
 }
 
 .user-card {
-  width: 100%;
-  padding: 16px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  background: var(--white);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
   text-align: center;
-  background-color: #fff;
-  font-family: "Segoe UI", sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.2s ease-in-out;
-  cursor: pointer;
+  overflow: hidden;
+  position: relative;
 }
 
 .user-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
 .user-card-img {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  margin-bottom: 16px;
   object-fit: cover;
+  border: 4px solid var(--primary-blue);
+  margin-bottom: 1rem;
 }
 
 .user-card-name {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0.5rem 0;
 }
-
 .user-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin: 20px auto;
-  padding: 20px;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
 }
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -81,23 +90,40 @@ img {
   gap: 50px;
 }
 
+.fetch-button,
 .previous,
-.next,
+.next {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-size: 1rem;
+}
+
 .fetch-button {
   background-color: #282c34;
   color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+}
+
+.previous {
+  background-color: #282c34;
+  color: white;
 }
 
 .next {
   background-color: #6f94df;
+  color: white;
 }
 
-.previous:hover,
-.next:hover,
-.fetch-button:hover {
+.fetch-button:hover,
+.previous:hover {
   background-color: #1a1d22;
+  transform: translateY(-2px);
+}
+
+.next:hover {
+  background-color: #5a84e0;
+  transform: translateY(-2px);
 }
